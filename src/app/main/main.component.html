@@ -1,0 +1,21 @@
+<td-layout #layout>
+  <td-navigation-drawer logo="assets:revature" sidenavTitle="Simple Messaging Portal" >
+    <md-list class="pad-none push-none">
+      <md-list-item class="user-card">
+        <md-icon md-list-avatar><span>HH</span></md-icon>
+        <h3 md-line class="tc-grey-800">Firstname Lastname</h3>
+        <p md-line class="tc-grey-800"> email</p>
+        <p md-line class="tc-grey-800"> user </p>
+      </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+    <md-nav-list>
+      <ng-template let-item let-last="last" ngFor [ngForOf]="routes">
+        <a md-list-item [routerLink]="[item.route]" (click)="layout.close()"><md-icon>{{item.icon}}</md-icon>{{item.title}}</a>
+      </ng-template>
+      <md-divider></md-divider>
+      <a md-list-item (click)="logout()"><md-icon>exit_to_app</md-icon>Sign out</a>
+    </md-nav-list>
+  </td-navigation-drawer>
+  <router-outlet></router-outlet>
+</td-layout>

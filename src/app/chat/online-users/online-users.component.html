@@ -1,0 +1,13 @@
+<div layout="column" layout-fill>
+    <md-toolbar>
+      <md-icon>people</md-icon>
+      <span>  Online Users</span>
+      <span flex></span>
+    </md-toolbar>
+    <md-nav-list>
+      <ng-template let-item let-i="index" let-last="last" ngFor [ngForOf]="[0,1,2,3,4,5]">
+        <a md-list-item><md-icon color="accent" md-list-icon>lens</md-icon> username{{i}}</a>
+      </ng-template>
+    </md-nav-list>
+</div>
+

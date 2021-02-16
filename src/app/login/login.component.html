@@ -1,0 +1,102 @@
+<div class="md-content" layout-padding flex >
+  <div layout-gt-xs="row" layout-align-gt-xs="center start" class="margin" [ngClass]="{'white-orange' : isSignIn == true }">
+    <div flex-gt-xs="50" style="max-width:600px;">
+      <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']" *ngIf="!isSignIn"  >
+        <md-card-title class="text-center" >
+          <img routerLink="/" src="../../assets/icons/rev-logo.svg" alt="" style="width:100%; max-width:355px;">
+          <div class="md-title">Staging Messaging Portal</div>
+          <div class="md-headline pad-lg">Sign In</div>
+        </md-card-title>
+        <div *ngIf="error" class="bgc-red-700  pad tc-grey-50">
+          <strong >Error!</strong> {{error.statusText}}
+        </div>
+        <md-card-content>
+          <form class="form-signin" #loginForm="ngForm">
+            <div layout="row">
+              <md-input-container flex>
+                <input mdInput type="text" class="form-control " placeholder="Username" [(ngModel)]="username" name="username" required autofocus>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container flex>
+                <input mdInput type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password"required>
+              </md-input-container>
+            </div>
+            <div style="width:100%;" class="text-right pad">
+              <a routerLink="/" >Forgot Password?</a>
+            </div>
+          </form>
+        </md-card-content>
+        <md-divider></md-divider>
+        <md-card-actions>
+          <button md-raised-button color="accent" class="btn btn-lg btn-primary btn-block" type="submit" name="submit" (click)="signIn()" [disabled]="!loginForm.form.valid"  >
+            SIGN IN</button>
+          <button md-button (click)="toggleStatus()" class=" btn btn-lg btn-block">REGISTER </button>
+        </md-card-actions>
+      </md-card>
+
+      <md-card tdMediaToggle="gt-xs" [mediaClasses]="['push-top-lg']" *ngIf="isSignIn" >
+        <md-card-title class="text-center pad "><img src="../../assets/icons/revature.svg" style="width:100%; max-width:355px;">
+          <div class="md-title">Staging Messaging Portal</div>
+        </md-card-title>
+        <md-card-title class="text-center tc-blue-light-blue-900">Register</md-card-title>
+        <div *ngIf="error" class="bgc-red-700  pad tc-grey-50">
+          <strong >Error!</strong> {{error.statusText}}
+        </div>
+        <md-card-content>
+          <form class="form-signin" #registerForm="ngForm">
+            <div layout="row">
+              <md-input-container flex>
+                <input mdInput type="text" class="form-control " placeholder="First Name" [(ngModel)]="firstName" name="firstName" required autofocus>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container flex>
+                <input mdInput type="text" class="form-control " placeholder="Last Name" [(ngModel)]="lastName" name="lastName" required autofocus>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container flex>
+                <input mdInput type="text" class="form-control " placeholder="Email" [(ngModel)]="email" name="email" required autofocus>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container flex>
+                <input mdInput type="password" class="form-control" placeholder="Password" [(ngModel)]="password" name="password"required>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container flex>
+                <input mdInput
+                       #passwordElement
+                       #passwordControl="ngModel"
+                       type="password"
+                       class="form-control"
+                       placeholder="Confirm Password"
+                       [(ngModel)]="confirmPassword"
+                       name="confirmPassword"
+                       validateEqual="password"
+                       required>
+              </md-input-container>
+            </div>
+            <div layout="row" class="push-top push-bottom" >
+              <md-select flex placeholder="Location" [(ngModel)]="location" name="location" required>
+                <md-option *ngFor="let location of locationList" [value]="location">
+                  {{location}}
+                </md-option>
+              </md-select>
+            </div>
+          </form>
+        </md-card-content>
+        <md-divider></md-divider>
+        <md-card-actions>
+          <button md-raised-button color="accent" class="btn btn-lg btn-primary btn-block" type="submit" name="submit" (click)="register()" [disabled]="!registerForm.form.valid">
+            REGISTER</button>
+          <button md-button (click)="toggleStatus()" class=" btn btn-lg btn-block">SIGN IN </button>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+  </div>
+</div>
+
